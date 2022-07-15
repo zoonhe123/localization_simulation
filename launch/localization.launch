@@ -1,0 +1,33 @@
+<launch> 
+ 
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find robot_description)/worlds/empty.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <param name="robot_description" textfile="$(find robot_description)/urdf/AGV.urdf" />
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf"
+    args="-file $(find robot_description)/urdf/AGV.urdf -urdf -x 0 -y 0 -model robot_description"
+
+    output="screen" />
+
+  <node name="noisy_odom" pkg="localization_simulation" type="noisy_odom.py" />
+
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization">
+        <rosparam command="load" file="$(find localization_simulation)/config/ekf_localization.yaml"/>
+  </node>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find localization_simulation)/rviz/local.rviz" />
+
+
+</launch>
