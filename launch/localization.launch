@@ -25,6 +25,7 @@
 
   <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization">
         <rosparam command="load" file="$(find localization_simulation)/config/ekf_localization.yaml"/>
+        <remap from="odom" to="odometry/filtered" />
   </node>
 
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find localization_simulation)/rviz/local.rviz" />

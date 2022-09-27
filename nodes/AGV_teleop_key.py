@@ -13,8 +13,8 @@ MAX_LIN_VEL = 0.22
 MAX_ANG_VEL = 2.84
 
 # 입력에 따라 증가/감소되는 선형/각속도 양
-LIN_VEL_STEP_SIZE = 0.01
-ANG_VEL_STEP_SIZE = 0.1
+LIN_VEL_STEP_SIZE = 0.5
+ANG_VEL_STEP_SIZE = 0.2
 
 msg = """
 Control Your AGV
