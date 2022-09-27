@@ -164,8 +164,8 @@ if __name__=="__main__":
     orientation_filtered_w = 0.0
 
     gyro_x_b = 0.0
-    gyro_x_b = 0.0
-    gyro_x_b = 0.0
+    gyro_y_b = 0.0
+    gyro_z_b = 0.0
     gyro_filtered_x = 0.0
     gyro_filtered_y = 0.0
     gyro_filtered_z = 0.0
